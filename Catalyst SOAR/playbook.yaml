@@ -1,1 +1,27 @@
-
+name: Vuln Detection and Mitigation
+tasks:
+  input:
+    name: Enter network
+    type: input
+    schema:
+      title: Something
+      type: object
+      properties:
+        something:
+          type: string
+          title: Something
+          default: ""
+    next:
+      range: something != ''
+  range:
+    name: nmap
+    type: automation
+    automation: scan-nmap
+    payload:
+      default: playbook.tasks['input'].data['something']
+    next:
+      close_case: null
+  close_case:
+    name: Close case
+    description: ""
+    type: task
