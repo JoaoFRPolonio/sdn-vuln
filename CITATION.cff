@@ -1,0 +1,9 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite it as below."
+authors:
+  - family-names: Polónio
+    given-names: João
+    orcid: https://orcid.org/0009-0009-0559-2950
+title: "Vulnerability Detection and Mitigation Leveraged by SDN"
+version: 0.0.1
+date-released: 2024-14-12
