@@ -18,6 +18,10 @@ The Deployment Diagram is represented next. It provides an overview of how the l
 
 ![screenshot](Figures/deployment_diagram.png)
 
+In short, the process begins in the Security Orchestration, Automation, and Response (SOAR) by the creation of a network scanning ticket that requests a device discovery (1), thus initiating a device discovery task (2) from the Security Service Adapter (SSA). The system then checks for any active devices on the network (3) after sending the request. If no devices are detected, the process waits for a timeout period (4) before returning to the initial device discovery request, restarting the loop. After detection, the status of the device is checked in the database (5). This status refers to the date of the last vulnerability scan carried out on the device, and, based on this parameter, it is decided whether or not the device should be scanned (6). The SOAR then generates a vulnerability scanning ticket for each identified device (7) and starts the vulnerability scan (8). The scan results are analyzed (9) to calculate a severity score (10). Based on the calculated score, the SOAR initiates a Virtual Local Area Network (VLAN) change (i.e. Mitigation Measure 1) to relocate the device to a quarantine zone via the SDN controller (11). This mitigation strategy is just one of several possible approaches. Other measures (i.e. Mitigation Measure 2), such as Deep Packet Inspection (DPI) to analyze network traffic for malicious content, the use of firewall rules to block specific communication, or even Moving Target Defense (MTD) to dynamically shift the network configuration, could also be implemented. However, for the objectives of this dissertation, these alternatives were not explored, with the focus being on VLAN isolation as a proof of concept for automated containment. If the device is considered safe, the process concludes and a new scanning is scheduled in the future (12).
+
+![screenshot](Figures/activity_diagram.png)
+
 ## Components 
 
 ### Catalyst SOAR
