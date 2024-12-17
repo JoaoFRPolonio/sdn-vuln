@@ -8,10 +8,11 @@ It was designed a system with the ideas from the previous section in mind to add
 
 The system’s architecture has several fundamental components described in the component diagram. It consists of two primary elements: the SOAR Server and the Security Tools Server. The SOAR Server hosts the SOAR Platform, while the Security Tools Server houses essential tools, including the Vulnerability Scanner and the Device Discovery Module.
 
-![screenshot](components.png)
+![screenshot](Figures/components.png)
 
+The Deployment Diagram is represented next. It provides an overview of how the logical components of the system, previously outlined, are deployed. It highlights the distribution of key services and applications, the interactions between them, and the communication protocols that are used. Components represented in blue have been created or their behavior modified.
 
-
+![screenshot](Figures/deployment_diagram.png)
 
 
 Caso haja um erro com a socket do GVM podes tentar:
