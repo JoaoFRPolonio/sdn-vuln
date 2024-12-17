@@ -30,7 +30,19 @@ To run the SSA:
 ```console
 $ python3 main.py
 ```
+### Redis database
 
+```console
+$ pip install redis 
+```
+
+```console
+$ sudo apt-get install redis-server
+```
+
+```console
+$ sudo service redis-server start
+```
 
 ### Device Discovery Module
 
@@ -52,8 +64,6 @@ If there is an error with the GVM socket you can try:
 ```console
 $ chmod 662 /var/run/gvmd/gvmd.sock
 ```
-
-
 ### Ryu SDN Controller
 
 Run SDN Controller docker:
@@ -75,8 +85,30 @@ sudo systemctl start docker
 sudo systemctl enable docker
 ```
 
+Start OpenvSwitch:
+```console
+$ service openvswitch-switch start 
+```
+
+To add interfaces to the switch you must create them by adding network interfaces to the virtual machine and then add the interface to the switch using the following command:
+```console
+$ sudo ovs-vsctl add-port s1 eth6
+```
+
+If you want to update Ryu docker:
+```console
+$ sudo docker commit d30e4628d942 my-ryu-image:latest 
+```
 
 ### DHCP Server
+
+The ISC DHCP was used in this system; however, given the end of its support, it is advisable to migrate to another DHCP service, such as [Kea](https://www.isc.org/kea/), which is its successor.
+
+Start ISC DHCP:
+```console
+$ sudo service isc-dhcp-server start 
+```
+
 
 
 
