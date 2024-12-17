@@ -43,8 +43,6 @@ def run(msg):
             print("Stored datetime is in the past or present.")
             print("Created Ticket:"+ str(datetime.utcnow()))
             r = requests.post(url = "https://192.168.13.161:8432/create_ticket/", verify=False)
-        #data2
-        #r2 = requests.post(url = "https://192.168.13.6:8432/set_host/", headers={'Content-Type': 'application/json'}, json=data2, verify=False)
       time.sleep(200)
       b = False
     return {"range": r1.json()}
