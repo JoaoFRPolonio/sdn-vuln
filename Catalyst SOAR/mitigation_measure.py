@@ -5,7 +5,7 @@ import os
 import json
 import requests
 
-inpt = json.loads(sys.argv[1])#['payload']['default']
+inpt = json.loads(sys.argv[1])
 def run(ip_address, score):
     if(float(score) > 5):
         r = requests.get(url = "http://192.168.13.6:8080/simpleswitch/change_vlan/" + str(ip_address) + "/20", verify=False)
@@ -17,6 +17,3 @@ ip_address = inpt['context']['ticket']['playbooks']['host-discovery']['tasks']['
 score = inpt['context']['ticket']['playbooks']['host-discovery']['tasks']['threat-score']['data']['score']
 
 print(json.dumps(run(ip_address, score)))
-#print("IP Address:", ip_address)
-#print("Score:", score)
-##
