@@ -89,7 +89,6 @@ def generate_ticket_id():
     redis_host = 'localhost'  # Replace with your Redis server's host
     redis_port = 6379
     redis_client = redis.Redis(host=redis_host, port=redis_port, decode_responses=True)
-    
  
     id = int(redis_client.get("t_id"))
     print(id)
@@ -115,8 +114,6 @@ async def create_ticket():
     with open(file_path, 'a') as file:
     	file.write(f"Vulnerability ticket created at {time}\n")
     
-    #print(x.json())
-    
 @app.post('/create_ticket_threat/')
 async def create_ticket_threat():
     url = "https://catalystdomain/api/"
@@ -138,24 +135,9 @@ async def create_ticket_threat():
 async def scan_report():
     url = "https://catalystdomain/api/"
     headers = {"Content-Type": "application/json; charset=utf-8", "PRIVATE-TOKEN":"6vIjzG1zryvqX5csISZXAp9ez7nH55f0"}
-    
-    
-
-#create_ticket()
-"""tck_id = 100025
-x = requests.post(url+str('tickets')+'/'+str(tck_id)+'/playbooks/scan-vulnerability/task/vuln-scan/run', headers=headers, verify=False)
-x = requests.put(url+str('tickets')+'/'+str(tck_id)+'/playbooks/scan-vulnerability/task/vuln-scan/complete', headers=headers, verify=False)
-print(x.json())"""
-
-#h = requests.post(url = "https://192.168.13.6:8432/get_host/", headers={'Content-Type': 'application/json'}, verify=False)
-#print(h.json())
-#data = {"ip_address": h.json()}
-#print(data)
-##
 
 def calculate_max_threat():#data):
     r = requests.post(url = "https://192.168.13.6:8432/get_report/", verify=False)
-    #r.session().close()
     report = r.json()
     #report_json = json.loads(report)
     print(type(report))
@@ -165,8 +147,6 @@ def calculate_max_threat():#data):
     #vuln = report_json['model']
     print(report)
     print(report.keys())
-    #print("uau")
-    #print(vulnerabilities)
     ip_address = report['result'][0]['host']['#text']
     print(ip_address)
     sev_array = []
@@ -184,29 +164,8 @@ def calculate_max_threat():#data):
     max_product = max(products)
     print(max_product/100)
     r = requests.get(url = "http://192.168.13.6:8080/simpleswitch/change_vlan/" + str(ip_address) + "/20", verify=False)
-    	#qod = vuln.get('qod', {}).get('value')
-    	#severity = vuln.get('severity')
-    	#print("QoD:", qod, "Severity:", severity)
-      #name = vulnerability["name"]
-      #severity = vulnerability["nvt"]["severities"]["@score"] if "severities" in vulnerability["nvt"] else "N/A"
-      #cvss_base = vulnerability["nvt"]["cvss_base"] if "cvss_base" in vulnerability["nvt"] else "N/A"
-      #print("Name:", name)
-      #print("Severity:", severity)
-      #print("CVSS Base Score:", cvss_base)
-      #print("-" * 50)'''
-    
-    
-    '''cvss_list = data[0]['address']['cvss']
-    qod_list = data[0]['address']['qod']
 
-    products = [float(cvss) * float(qod) for cvss, qod in zip(cvss_list, qod_list)]
-    max_product = max(products)
-    ip_address = data[0]['ip']
-    return {"score": max_product/100, "ip_address": ip_address}'''
-    return "batata"
-
-#print("Zezoca")    
-#calculate_max_threat()
+    return "finished"
 
 if __name__ == '__main__':
     uvicorn.run("main:app",
