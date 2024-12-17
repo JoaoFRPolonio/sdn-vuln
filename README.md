@@ -53,11 +53,16 @@ If there is an error with the GVM socket you can try: chmod 662 /var/run/gvmd/gv
 
 ### Ryu SDN Controller
 
+Run SDN Controller docker:
+```console
+$ sudo docker run -p 6653:6653 -p 8080:8080 -ti --rm my-ryu-image:latest /bin/bash 
+```
+Launch Ryu:
 ```console
 $ ryu-manager ryu.py
 ```
 
-Se o controlador não detetar tráfego podes tentar:
+If the controller doesn't detect traffic you can try:
 ```console
 $ sudo pkill docker                                                                                                         
 sudo iptables -t nat -F
