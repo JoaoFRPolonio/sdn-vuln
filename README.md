@@ -31,13 +31,28 @@ Therefore, the installation steps should be followed via the official Catalyst [
 
 The files in the [Device Discovery Module](https://github.com/linuxer1337/sdn-vuln/tree/main/Device%20Discovery) require the installation of the nmap python library and may (or may not) be run in a docker container.
 
+To install python-nmap:
+
 ```console
 $ pip install python-nmap
 ```
 
+To run the docker containing nmap:
+
 ```console
 $ sudo docker run -it ubuntu-nmap:latest
 ```
+
+### Vulnerability Scanner
+
+
+### Ryu SDN Controller
+
+
+### DHCP Server
+
+
+
 
 
 
