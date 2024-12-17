@@ -126,6 +126,11 @@ Start ISC DHCP:
 $ sudo service isc-dhcp-server start 
 ```
 
+## Steps Forward
+
+- Install and implement the new version of Catalyst SOAR.
+- Use [python-gvm](https://greenbone.github.io/python-gvm/) for integration.
+- Replace polling method for callback to get the report from GVM.
 
 
 
