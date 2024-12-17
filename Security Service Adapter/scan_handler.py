@@ -10,33 +10,10 @@ import json
 import xmltodict
 
 def request_tasks(alive_hosts_str):
-	print("ENtrei1")
 	print(alive_hosts_str)
-	#alive_hosts = ast.literal_eval(alive_hosts_str)
 	ip = alive_hosts_str
-	#print(alive_hosts)
-	print("ENtrei2")
 	report_id_dict = {}
-	#alive_hosts = ['192.168.13.99']
 	
-	# Ignore the gateway
-	'''if '192.168.233.2' in alive_hosts:
-    		alive_hosts.remove('192.168.233.2')
-	if '192.168.233.132' in alive_hosts:
-		alive_hosts.remove('192.168.233.132')
-	if '192.168.233.128' in alive_hosts:
-		alive_hosts.remove('192.168.233.128')
-	if '192.168.233.135' in alive_hosts:
-		alive_hosts.remove('192.168.233.135')'''
-    		
-	'''for ip in alive_hosts:
-		try:
-			output = subprocess.check_output(['sh', './scan_host.sh', ip], stderr=subprocess.STDOUT)
-			report_id = extract_report_id(output)
-			report_id_dict[ip] = report_id
-		except subprocess.CalledProcessError as e:
-			raise RuntimeError("command '{}' return with error (code {}): {}".format(e.cmd, e.returncode, e.output))
-	return report_id_dict'''
 	try:
 		output = subprocess.check_output(['sh', './scan_host.sh', ip], stderr=subprocess.STDOUT)
 		report_id = extract_report_id(output)
@@ -94,7 +71,7 @@ def poll_scan_status(ip_to_id):
     			break
     		else:
     			print(results)
-    		time.sleep(120)  # Wait for 1 second before checking again
+    		time.sleep(120)  # Wait for 120 seconds before checking again
 	return results
 
 def weight_fair_queuing(values, weights):
@@ -187,8 +164,7 @@ def retrieve_threat_info(report_id):
     return data
     
 def xml_to_json(report_id):
-	#xml_file=open('/home/kali/Documents/API_dev/XML_Reports/' + report_id + '.xml',"r")
-	xml_file=open('/home/kali/Documents/API_dev/XML_Reports/ab9d5603-bb8f-48d4-b24d-98328b49bfbc.xml',"r")
+	xml_file=open('/home/kali/Documents/API_dev/XML_Reports/' + report_id + '.xml',"r")
 	xml_string=xml_file.read()
 	python_dict=xmltodict.parse(xml_string)
 	json_string=json.dumps(python_dict)
