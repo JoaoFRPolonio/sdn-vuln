@@ -29,8 +29,14 @@ Therefore, the installation steps should be followed via the official Catalyst [
 
 ### Device Discovery Module
 
+The files in the [Device Discovery Module](https://github.com/linuxer1337/sdn-vuln/tree/main/Device%20Discovery) require the installation of the nmap python library and may (or may not) be run in a docker container.
+
 ```console
-root@catalystserver:~$ sudo docker run -it ubuntu-nmap:latest
+$ pip install python-nmap
+```
+
+```console
+$ sudo docker run -it ubuntu-nmap:latest
 ```
 
 
