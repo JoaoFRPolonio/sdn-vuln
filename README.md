@@ -18,6 +18,17 @@ The Deployment Diagram is represented next. It provides an overview of how the l
 
 ## Components 
 
+### Catalyst SOAR
+
+The version of Catalyst used in this system was 0.10.3. As this project is constantly being updated and improved, it is advisable to install it following the steps on the website. The OpenAPI code present here will no longer be useful, as Catalyst is now based on PocketBase, replacing much of the logic.
+
+Therefore, the installation steps should be followed via the official Catalyst [Installation Guide](https://catalyst.security-brewery.com/docs/catalyst/admin/install).
+
+### Security Service Adapter
+
+
+
+
 Caso haja um erro com a socket do GVM podes tentar:
 chmod 662 /var/run/gvmd/gvmd.sock
 
