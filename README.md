@@ -27,6 +27,12 @@ Therefore, the installation steps should be followed via the official Catalyst [
 ### Security Service Adapter
 
 
+### Device Discovery Module
+
+```console
+root@catalystserver:~$ sudo docker run -it ubuntu-nmap:latest
+```
+
 
 
 Caso haja um erro com a socket do GVM podes tentar:
