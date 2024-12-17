@@ -30,6 +30,11 @@ Therefore, the installation steps should be followed via the official Catalyst [
 
 The SSA integration allows OpenVAS to run and serves as a bridge to integrate different security tools with SOAR.
 
+Install FastAPI:
+```console
+$ pip install fastapi
+```
+
 To run the SSA:
 ```console
 $ python3 main.py
