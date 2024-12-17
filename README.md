@@ -48,7 +48,10 @@ $ sudo docker run -it ubuntu-nmap:latest
 
 ### Vulnerability Scanner
 
-If there is an error with the GVM socket you can try: chmod 662 /var/run/gvmd/gvmd.sock
+If there is an error with the GVM socket you can try: 
+```console
+$ chmod 662 /var/run/gvmd/gvmd.sock
+```
 
 
 ### Ryu SDN Controller
