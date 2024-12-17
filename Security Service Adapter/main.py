@@ -111,13 +111,9 @@ def host_queue(host_given: Host):
 	time = datetime.now()
 	key = host_given.host
 	disc_hosts.put(key)
-	#
-	#
 	
 	#print("Colocado" + key)
 	#print("Retirado" + disc_hosts.get().decode('utf-8'))
-
-	
 	redis_client.close()
 	
 	return "Success"
@@ -126,7 +122,7 @@ def host_queue(host_given: Host):
 def get_host():
 	
 	# Connect to the Redis server
-	redis_host = 'localhost'  # Replace with your Redis server's host
+	redis_host = 'localhost' 
 	redis_port = 6379
 	redis_client = redis.Redis(host=redis_host, port=redis_port, decode_responses=True)
 	
@@ -156,33 +152,25 @@ def get_host():
 def scan_new_target(target: Vuln_Scan_Req):
 	target_ip = target.ip_address
 	print("Request to scan the target with the IP address: " + target_ip)
-	#ip_to_report_dict = scan_handler.request_tasks(target_ip)
-	#print(scan_handler.check_scan_status(ip_to_report_dict))	
-	#scan_status = scan_handler.poll_scan_status(ip_to_report_dict)
-	#output = scan_handler.retrieve_threat_info(ip_to_report_dict)
-	output = scan_handler.retrieve_threat_info('')
+	ip_to_report_dict = scan_handler.request_tasks(target_ip)
+	print(scan_handler.check_scan_status(ip_to_report_dict))	
+	scan_status = scan_handler.poll_scan_status(ip_to_report_dict)
+	output = scan_handler.retrieve_threat_info(ip_to_report_dict)
 	print(output)
 	
 	# Connect to the Redis server
-	redis_host = 'localhost'  # Replace with your Redis server's host
+	redis_host = 'localhost' 
 	redis_port = 6379
 	redis_client = redis.Redis(host=redis_host, port=redis_port, decode_responses=True)
-	
 	reports_queue.put(output)
 	
 	redis_client.close()
-	
-	#host_nvt_scores = ['10.0', '10.0', '10.0', '10.0', '8.1', '7.5', '6.4', '5.0', '5.0', '5.0', '5.0', '2.1']
-	#host_nvt_qods = ['98', '98', '80', '80', '95', '99', '80', '80', '80', '70', '80', '80']
-	#return host_nvt_scores, host_nvt_qods
-	#return [[["10.0","10.0","10.0","10.0","8.1","7.5","6.4","5.0","5.0","5.0","5.0","2.1"],["10.0","8.1","5.0","2.6","2.1"],["10.0","10.0","10.0","10.0","10.0","10.0","9.8","9.3","9.0","9.0","9.0","8.1","7.5","7.5","7.5","7.5","7.5","7.5","7.5","7.5","7.5","7.5","7.5","7.5","7.4","6.8","6.8","6.4","6.1","6.1","6.0","6.0","5.9","5.9","5.8","5.3","5.3","5.3","5.3","5.0","5.0","5.0","5.0","5.0","5.0","5.0","5.0","5.0","4.8","4.8","4.8","4.8","4.8","4.3","4.3","4.3","4.3","4.3","4.3","4.3","4.0","4.0","4.0","4.0","3.7","3.4","3.4","2.6","2.6","2.1"]],[["98","98","80","80","95","99","80","80","80","70","80","80"],["80","95","80","80","80"],["80","99","80","80","99","80","99","99","95","95","99","80","95","80","95","99","99","70","80","95","99","95","95","80","70","80","99","80","80","80","99","80","98","98","99","80","80","80","80","80","99","98","70","99","99","70","70","99","70","70","80","70","70","98","98","80","95","99","99","80","80","80","80","80","80","80","80","80","95","80"]],[["70","70","80","80","80","80","80","80","80","80","80","80"],["70","70","80","80","80"],["70","70","80","80","80","80","80","80","80","80","80","80","80","80","80","80","80","80","70","80","80","80","80","80","80","70","80","80","80","80","80","80","80","80","80","80","80","80","70","80","80","70","70","80","70","70","80","70","70","70","70","80","80","80","80","80","80","80","80","80","70","80","80"]]]
-	#return [{"address": {"cvss": ["10.0", "10.0", "10.0", "10.0", "8.1", "7.5", "6.4", "5.0", "5.0", "5.0", "5.0", "2.1"], "qod": ["80", "98", "98", "80", "95", "99", "80", "80", "70", "80", "80", "80"]}, "ip": "192.168.13.99"}]
 	return output
 	
 @app.post('/get_report/')
 def get_report():
 	# Connect to the Redis server
-	redis_host = 'localhost'  # Replace with your Redis server's host
+	redis_host = 'localhost' 
 	redis_port = 6379
 	redis_client = redis.Redis(host=redis_host, port=redis_port, decode_responses=True)
 	
