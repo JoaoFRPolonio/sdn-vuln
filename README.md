@@ -28,12 +28,16 @@ Therefore, the installation steps should be followed via the official Catalyst [
 
 ### Security Service Adapter
 
+The SSA integration allows OpenVAS to run and serves as a bridge to integrate different security tools with SOAR.
+
 To run the SSA:
 ```console
 $ python3 main.py
 ```
 
 ### Redis Database
+
+The following commands explain how to install and run the Redis database:
 
 ```console
 $ pip install redis 
@@ -62,6 +66,11 @@ $ sudo docker run -it ubuntu-nmap:latest
 ```
 
 ### Vulnerability Scanner
+
+Install GVM:
+```console
+$ sudo apt install gvm
+```
 
 If there is an error with the GVM socket you can try: 
 ```console
