@@ -26,27 +26,46 @@ Therefore, the installation steps should be followed via the official Catalyst [
 
 ### Security Service Adapter
 
+To run the SSA:
+```console
+$ python3 main.py
+```
+
 
 ### Device Discovery Module
 
 The files in the [Device Discovery Module](https://github.com/linuxer1337/sdn-vuln/tree/main/Device%20Discovery) require the installation of the nmap python library and may (or may not) be run in a docker container.
 
 To install python-nmap:
-
 ```console
 $ pip install python-nmap
 ```
 
 To run the docker containing nmap:
-
 ```console
 $ sudo docker run -it ubuntu-nmap:latest
 ```
 
 ### Vulnerability Scanner
 
+If there is an error with the GVM socket you can try: chmod 662 /var/run/gvmd/gvmd.sock
+
 
 ### Ryu SDN Controller
+
+```console
+$ ryu-manager ryu.py
+```
+
+Se o controlador não detetar tráfego podes tentar:
+```console
+$ sudo pkill docker                                                                                                         
+sudo iptables -t nat -F
+sudo ifconfig docker0 down
+sudo brctl delbr docker0
+sudo systemctl start docker
+sudo systemctl enable docker
+```
 
 
 ### DHCP Server
@@ -54,9 +73,5 @@ $ sudo docker run -it ubuntu-nmap:latest
 
 
 
-
-
-Caso haja um erro com a socket do GVM podes tentar:
-chmod 662 /var/run/gvmd/gvmd.sock
 
 
