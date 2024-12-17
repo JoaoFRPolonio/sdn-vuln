@@ -121,6 +121,11 @@ If you want to update Ryu docker:
 $ sudo docker commit d30e4628d942 my-ryu-image:latest 
 ```
 
+Run Mininet:
+```console
+$ sudo mn --topo single,5 --mac --switch ovsk,protocols=OpenFlow13 --controller remote,port=6653 --nat --ipbase 192.168.13.0
+```
+
 ### DHCP Server
 
 The ISC DHCP was used in this system; however, given the end of its support, it is advisable to migrate to another DHCP service, such as [Kea](https://www.isc.org/kea/), which is its successor.
